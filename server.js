@@ -1,7 +1,10 @@
+const dotevn = require("dotenv");
+dotevn.config();
+
 const http = require("http");
 const mongodb = require("mongodb");
 
-const connectionString = "mongodb+srv://akramovsardor93:dpse5wJhF2aIq1tD@cluster0.k40qhfh.mongodb.net/Reja";
+const connectionString = process.env.MONGO_URL;
 
 mongodb.connect(connectionString, {
     useNewUrlParser: true,
@@ -15,7 +18,7 @@ mongodb.connect(connectionString, {
 
         const app = require("./app");
         const server = http.createServer(app);
-        let PORT = 3000;
+        let PORT = process.env.PORT || 3003;
         server.listen(PORT, function () {
             console.log(`The server is running successfully on port: ${PORT}, 
             http://localhost:${PORT}`);
