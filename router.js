@@ -13,4 +13,8 @@ router.get("/community", (req, res) => {
     res.send("Jamiyat sahifasidasiz");
 });
 
+router.get("/main", (req, res) => {
+    res.send("Asosiy sahifadasiz!!!");
+});
+
 module.exports = router;
