@@ -74,7 +74,7 @@ const memberSchema = new mongoose.Schema({
         type: Number, required: false, default: 0
     },
 },
-    { timestamps: true },
+{ timestamps: true },
 );
 
 module.exports = mongoose.model("Member", memberSchema);
