@@ -1,22 +1,41 @@
-// isPrime sonni aniqlash
-console.log("Sonning tub yoki tub emasligini aniqlash!!!");
+const detail_list = [12, 23, null, 34, null, 32, null, null, 66, 84];
+const result = moveNullsKeepOrder(detail_list);
+console.log("result:", result);
 
-function tubSon(raqam){
-    if(raqam <= 1){
-        return false;
-    }
-    for(let i = 2; i <= raqam/2; i++){
-        if(raqam % i === 0){
-            return false;
+function moveNullsKeepOrder(detail_list) {
+    let newArray = [];
+    for (let i = detail_list.length; i >= 0; i--){
+        if (detail_list[i] > 0){
+            newArray.unshift(detail_list[i]);
+        }
+        if (detail_list[i] === null){
+            newArray.push(detail_list[i]);
         }
     }
-    return true;
+    return newArray;
 }
 
-console.log(tubSon(11));
-console.log(tubSon(25));
-console.log(tubSon(67));
-console.log(tubSon(43));
+// moveNullsKeepOrder(detail_list);
+
+// isPrime sonni aniqlash
+// console.log("Sonning tub yoki tub emasligini aniqlash!!!");
+
+// function tubSon(raqam){
+//     if(raqam <= 1){
+//         return false;
+//     }
+//     for(let i = 2; i <= raqam/2; i++){
+//         if(raqam % i === 0){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+// console.log(tubSon(11));
+// console.log(tubSon(25));
+// console.log(tubSon(67));
+// console.log(tubSon(43));
 
 
 
