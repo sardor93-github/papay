@@ -13,7 +13,7 @@ memberController.signup = async (req, res) => {
 
         res.send("done");
     } catch(err) {
-        console.log(`ERROR, cont/signup`);
+        console.log(`ERROR, cont/signup, ${err.message}`);
     }
 };
 
