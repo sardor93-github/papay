@@ -7,8 +7,8 @@ const router_bssr = require("./router_bssr.js");
 
 let session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
-const store = new MongoDBStore ({
-    uri: "mongodb+srv://akramovsardor93:dpse5wJhF2aIq1tD@cluster0.k40qhfh.mongodb.net/Papay",
+const store = new MongoDBStore({
+    uri: process.env.MONGO_URL,
     collection: "sessions",
 });
 
@@ -20,20 +20,22 @@ app.use(express.urlencoded({ extended: true }));
 
 //2: Session code
 
-// app.use(cookieSession({maxAge: (24 * 60 * 60 * 1000), keys: [keys['sessions.cookieKey']]}));
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        cookie: {
+            maxAge: 1000 * 60 * 30,
+        },
+        store: store,
+        resave: true,
+        saveUninitialized: true,
+    })
+);
 
-
-// app.use(
-//     session({
-//         // secret: process.env.SESSION_SECRET,
-//         cookie: {
-//             maxAge: 1000*60*30,
-//         },
-//         store: store,
-//         resave: true,
-//         saveUninitialized: true,
-//     })
-// );
+app.use(function(req, res, next) {
+    res.locals.member = req.session.member;
+    next();
+});
 
 //3: Views code
 

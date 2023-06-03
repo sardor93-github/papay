@@ -1,0 +1,14 @@
+<%- include(`includes/header.ejs`) %>
+
+<body>
+    <h1>Restaurant Menu Page</h1>
+    <% if(!member){ %>
+        <h2>siz authenticated emassiz!!!</h2>
+    <% } else { %>
+        <h1>Siz authenticated bo'lgansiz!!! sizning nickingiz <%= member.mb_nick %>
+        <p>sizning telefon nomeringiz <%= member.mb_phone %></p>
+        </h1>
+    <% } %>
+</body>
+
+<%- include(`includes/footer.ejs`) %>
