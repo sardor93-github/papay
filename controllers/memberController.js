@@ -21,9 +21,9 @@ memberController.signup = async (req, res) => {
 memberController.login = async (req, res) => {
     try {
         console.log(`POST: cont/login`);
-        const data = req.body, 
-        member = new Member, 
-        result = await member.loginData(data);
+        const data = req.body,
+            member = new Member,
+            result = await member.loginData(data);
 
         res.json({ state: 'success', data: result });
     } catch (err) {
