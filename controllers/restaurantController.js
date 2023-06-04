@@ -89,6 +89,7 @@ restaurantController.validateAuthRestaurant = (req, res, next) => {
         message: "only authenticated members with restaurant type"
     });
 };
+
 restaurantController.checkSession = (req, res) => {
     if (req.session?.member) {
         res.json({ state: 'succeed', data: req.session.member })
