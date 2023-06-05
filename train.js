@@ -1,19 +1,34 @@
-const detail_list = [12, 23, null, 34, null, 32, null, null, 66, 84];
-const result = moveNullsKeepOrder(detail_list);
-console.log("result:", result);
+/**  Masalan: findDigits('ad5we34jkf89') return qilishi kerak bolgan qiymat '53489'*/
 
-function moveNullsKeepOrder(detail_list) {
-    let newArray = [];
-    for (let i = detail_list.length; i >= 0; i--){
-        if (detail_list[i] > 0){
-            newArray.unshift(detail_list[i]);
-        }
-        if (detail_list[i] === null){
-            newArray.push(detail_list[i]);
-        }
+function findDigits(ele){
+    let result = '';
+    for (let i = 0; i < ele.length; i++) {
+        let x = ele.charAt(i);
+        if (!isNaN(x)){
+            result += x;
+        }        
     }
-    return newArray;
+    return console.log("result: ", result);
 }
+const str = "sdsa5d5sad1dsad3";
+findDigits(str);
+
+// const detail_list = [12, 23, null, 34, null, 32, null, null, 66, 84];
+// const result = moveNullsKeepOrder(detail_list);
+// console.log("result:", result);
+
+// function moveNullsKeepOrder(detail_list) {
+//     let newArray = [];
+//     for (let i = detail_list.length; i >= 0; i--){
+//         if (detail_list[i] > 0){
+//             newArray.unshift(detail_list[i]);
+//         }
+//         if (detail_list[i] === null){
+//             newArray.push(detail_list[i]);
+//         }
+//     }
+//     return newArray;
+// }
 
 // moveNullsKeepOrder(detail_list);
 

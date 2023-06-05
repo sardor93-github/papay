@@ -36,7 +36,7 @@ restaurantController.signupProcess = async (req, res) => {
         req.session.member = new_member;
 
         res.redirect('/resto/products/menu');
-        // // SESSION
+        // SESSION
 
         // res.json({ state: 'success', data: new_member });
     } catch (err) {
