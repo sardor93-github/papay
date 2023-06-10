@@ -1,16 +1,16 @@
 const Member = require("../models/Member");
+const Product = require("../models/Product");
 
 let restaurantController = module.exports;
 
-restaurantController.getMyRestaurantData = async (req, res) => {
+restaurantController.getMyRestaurantProduct = async (req, res) => {
     try {
-        console.log("GET: cont/getMyRestaurantData");
-
-        //TODO: Get my restaurant products
-
-        res.render('restaurant-menu');
+        console.log("GET: cont/getMyRestaurantProduct");
+        const product = new Product;
+        const data = await product.getAllProductsDataResto(res.locals.member);
+        res.render('restaurant-menu', {restaurant_data: data});
     } catch (err) {
-        console.log(`ERROR: cont/getMyRestaurantData, ${err.message}`);
+        console.log(`ERROR: cont/getMyRestaurantProduct, ${err.message}`);
         res.json({ state: "fail", message: err.message });
     }
 };
