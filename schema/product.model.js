@@ -12,16 +12,17 @@ const Schema = mongoose.Schema;
 const productSchema = new mongoose.Schema({
     product_name: { type: String, required: true },
     product_collection: {
-        type: String, required: true,
+        type: String, 
+        required: true, 
         enum: {
-            value: product_collection_enums,
-            message: "{VALUE} is not among permitted values"
-        }
+            values: product_collection_enums,
+            message: "{VALUE} is not among permitted values",
+        },
     },
     product_status: {
         type: String, required: false, default: "PAUSED",
         enum: {
-            value: product_status_enums,
+            values: product_status_enums,
             message: "{VALUE} is not among permitted values"
         }
     },
@@ -31,10 +32,11 @@ const productSchema = new mongoose.Schema({
     product_size: {
         type: String, default: "normal", required: function () {
             const sized_list = ['dish', 'salad', 'dessert'];
-            return sized_list.includes(this.product_collection)
+            return sized_list.includes(this.product_collection);
         }, //todo
         enum: {
-            value: product_size_enums,
+            
+            values: product_size_enums,
             message: "{VALUE} is not among permitted values"
         }
     },
@@ -43,7 +45,7 @@ const productSchema = new mongoose.Schema({
             return (this.product_collection === "drink");
         }, //todo
         enum: {
-            value: product_volume_enums,
+            values: product_volume_enums,
             message: "{VALUE} is not among permitted values"
         }
     },

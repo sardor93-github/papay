@@ -1,17 +1,42 @@
 /**  Masalan: findDigits('ad5we34jkf89') return qilishi kerak bolgan qiymat '53489'*/
 
-function findDigits(ele){
-    let result = '';
-    for (let i = 0; i < ele.length; i++) {
-        let x = ele.charAt(i);
-        if (!isNaN(x)){
-            result += x;
-        }        
+// function findDigits(ele){
+//     let result = '';
+//     for (let i = 0; i < ele.length; i++) {
+//         let x = ele.charAt(i);
+//         if (!isNaN(x)){
+//             result += x;
+//         }        
+//     }
+//     return console.log("result: ", result);
+// }
+// const str = "sdsa5d5sad1dsad3";
+// findDigits(str);
+
+
+/** CHALLENGE 5: MURDER CASE */
+
+const magazine = "Lorem kill ipsum dolor sit amet, consectetur adipiscing elit. Donec you."
+
+const note = "dolor kill you";
+const result = canMurderWrite(note);
+console.log("Killer yoza oladimi:", result);
+
+function canMurderWrite(note) {
+    const words = note.split(" ");
+    let result = true;
+
+    for (let i = 0; i < words.length; i++){
+        if(!magazine.includes(words[i])){
+            result = false;
+            break;
+        }
     }
-    return console.log("result: ", result);
+    return result;
 }
-const str = "sdsa5d5sad1dsad3";
-findDigits(str);
+
+
+
 
 // const detail_list = [12, 23, null, 34, null, 32, null, null, 66, 84];
 // const result = moveNullsKeepOrder(detail_list);
