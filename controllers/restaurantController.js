@@ -3,12 +3,22 @@ const Product = require("../models/Product");
 
 let restaurantController = module.exports;
 
+restaurantController.home = (req, res) => {
+    try {
+        console.log("GET: cont/home");
+        res.render('home-page');
+    } catch (err) {
+        console.log(`ERROR: cont/home, ${err.message}`);
+        res.json({ state: "fail", message: err.message });
+    }
+}
+
 restaurantController.getMyRestaurantProduct = async (req, res) => {
     try {
         console.log("GET: cont/getMyRestaurantProduct");
         const product = new Product;
         const data = await product.getAllProductsDataResto(res.locals.member);
-        res.render('restaurant-menu', {restaurant_data: data});
+        res.render('restaurant-menu', { restaurant_data: data });
     } catch (err) {
         console.log(`ERROR: cont/getMyRestaurantProduct, ${err.message}`);
         res.json({ state: "fail", message: err.message });
@@ -61,6 +71,7 @@ restaurantController.loginProcess = async (req, res) => {
         const data = req.body,
             member = new Member,
             result = await member.loginData(data);
+
 
         req.session.member = result;
         req.session.save(function () {

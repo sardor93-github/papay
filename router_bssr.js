@@ -8,9 +8,11 @@ const uploader_product = require("./utils/upload-multer")("products");
  *            BSSR EJS          *
  ********************************/
 
+router_bssr.get("/", restaurantController.home);
+
 router_bssr
-    .get("/signup", restaurantController.getSignupMyRestaurant)
-    .post("/signup", restaurantController.signupProcess);
+    .get("/sign-up", restaurantController.getSignupMyRestaurant)
+    .post("/sign-up", restaurantController.signupProcess);
 
 router_bssr
     .get("/login", restaurantController.getLoginMyRestaurant)
@@ -25,9 +27,9 @@ router_bssr.post(
     restaurantController.validateAuthRestaurant,
     uploader_product.array('product_images', 5),
     productController.addNewProduct);
-    
-    router_bssr.post("/products/edit/:id", 
+
+router_bssr.post("/products/edit/:id",
     restaurantController.validateAuthRestaurant,
     productController.updateChosenProduct);
 
-module.exports = router_bssr;
+module.exports = router_bssr;  

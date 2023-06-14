@@ -22,12 +22,11 @@ productController.addNewProduct = async (req, res) => {
 
         const product = new Product();
         let data = req.body;
-        console.log("req.body: ", req.body);
 
         data.product_images = req.files.map(ele => {
             return ele.path;
         });
-        console.log("Data: ", data);
+        // console.log("Data: ", data);
 
         const result = await product.addNewProductData(data, req.member);
         // assert.ok(result, Definer.product_err1);
@@ -49,7 +48,7 @@ productController.updateChosenProduct = async (req, res) => {
         console.log("POST: cont/updateChosenProduct");
         const product = new Product();
         const id = req.params.id;
-        console.log(req.params.id);
+        // console.log(req.params.id);
         const result = await product
             .updateChosenProductData(
                 id,

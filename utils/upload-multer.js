@@ -9,7 +9,6 @@ function getTargetImageStorage() {
             cb(null, `./uploads/products`);
         },
         filename: function (req, file, cb) {
-            console.log(file);
             const extention = path.parse(file.originalname).ext;
             const random_name = uuid.v4() + extention;
             cb(null, random_name);

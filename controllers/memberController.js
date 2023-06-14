@@ -9,7 +9,7 @@ memberController.signup = async (req, res) => {
         const member = new Member();
         const new_member = await member.signupData(data);
 
-        //TODO: AUTHENTICATE BASD ON JWT
+        //TODO: AUTHENTICATE BASED ON JWT
 
         res.json({ state: 'success', data: new_member });
     } catch (err) {
