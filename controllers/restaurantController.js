@@ -57,13 +57,17 @@ restaurantController.signupProcess = async (req, res) => {
         req.session.member = result;
 
         res.redirect('/resto/products/menu');
+
     } catch (err) {
+
         console.log(`ERROR, cont/signup, ${err.message}`);
         res.json({ state: 'fail', message: err.message });
+
     }
 };
 
 restaurantController.getLoginMyRestaurant = async (req, res) => {
+
     try {
         console.log("GET: cont/getLoginMyRestaurant");
         res.render('login-page');
@@ -71,6 +75,7 @@ restaurantController.getLoginMyRestaurant = async (req, res) => {
         console.log(`ERROR: cont/getLoginMyRestaurant, ${err.message}`);
         res.json({ state: "fail", message: err.message });
     }
+
 };
 
 restaurantController.loginProcess = async (req, res) => {
@@ -96,8 +101,18 @@ restaurantController.loginProcess = async (req, res) => {
 };
 
 restaurantController.logout = (req, res) => {
-    console.log("GET cont.logout");
-    res.send("logout sahifadasiz");
+    try {
+        console.log("GET cont/logout");
+        console.log("REQ SESSION:", req.session.destroy);
+        req.session.destroy(function () {
+            res.redirect("/resto");
+        });
+
+    } catch (err) {
+        console.log(`ERROR, cont/logout, ${err.message}`);
+        res.json({ state: 'fail', message: err.message });
+    }
+
 };
 
 restaurantController.validateAuthRestaurant = (req, res, next) => {
