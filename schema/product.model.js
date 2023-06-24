@@ -49,7 +49,7 @@ const productSchema = new mongoose.Schema({
             message: "{VALUE} is not among permitted values"
         }
     },
-    product_discription: { type: String, required: true },
+    product_discription: { type: String, required: false },
     product_images: { type: Array, required: false, default: [] },
     product_likes: { type: Number, required: false, default: 0 },
     product_views: { type: Number, required: false, default: 0 },
