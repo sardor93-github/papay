@@ -132,7 +132,7 @@ restaurantController.validateAdmin = (req, res, next) => {
                 alert("Admin page: Permission denied!");
                 window.location.replace('/resto);
             </script>`;
-    res.send(html);
+    res.end(html);
   }
 };
 
@@ -156,7 +156,7 @@ restaurantController.updateRestaurantByAdmin = async (req, res) => {
     console.log("GET: cont/updateRestaurantByAdmin");
     const restaurant = new Restaurant();
     const result = await restaurant.updateRestaurantByAdminData(req.body);
-    // console.log(req.body);
+    // console.log("REQ.BODY", req.body);
 
     await res.json({ state: "success", data: result });
   } catch (err) {
